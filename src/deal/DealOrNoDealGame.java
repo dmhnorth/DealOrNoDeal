@@ -3,6 +3,7 @@ package deal;
 import java.util.Random;
 
 public class DealOrNoDealGame {
+    Random random = new Random();
 
     public void start() {
 
@@ -14,7 +15,6 @@ public class DealOrNoDealGame {
 
         populateBoxes(boxes);
 
-        Random random = new Random();
         myBox = boxes[random.nextInt(gameSize)];
         myBox.open();
 
@@ -26,10 +26,13 @@ public class DealOrNoDealGame {
         }
     }
 
-    private static void populateBoxes(Box[] boxes) {
+    private void populateBoxes(Box[] boxes) {
+
+        int value = 10;
 
         for (int box = 0; box < boxes.length; box++) {
-            boxes[box] = new Box(box + 1, 1000);
+            boxes[box] = new Box(box + 1, random.nextInt(value + 1000));
+            value *= 2;
         }
     }
 }

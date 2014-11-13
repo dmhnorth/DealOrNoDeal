@@ -11,6 +11,7 @@ public class Box {
         setId(id);
         setValue(value);
         setOpened(false);
+        System.err.println("Created= " + getId() + " £" + value);
     }
 
 
@@ -42,7 +43,7 @@ public class Box {
     @Override
     public String toString() {
         try {
-            return getId() + " : " + isOpened() + " : " + getValue();
+            return getId() + " : " + isOpened() + " : £" + getValue();
         } catch (IllegalStateException e) {
             return String.valueOf(getId() + " : " + isOpened());
         }
