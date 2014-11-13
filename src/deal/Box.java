@@ -11,7 +11,6 @@ public class Box {
         setId(id);
         setValue(value);
         setOpened(false);
-        System.err.println("Created= " + getId() + " £" + value);
     }
 
 
