@@ -23,6 +23,7 @@ public class DealOrNoDealGame {
         System.out.println("Welcome to Deal or No Deal. You have box: " + myBox.toString());
 
         printGame(boxes);
+        printCurrentOffer(boxes);
 
         System.out.println("Please choose 5 boxes to start the game: ");
 
@@ -31,16 +32,31 @@ public class DealOrNoDealGame {
             System.out.println("Choose another: ");
         }
         printGame(boxes);
+        printCurrentOffer(boxes);
 
+    }
+
+    private void printCurrentOffer(Box[] boxes) {
         System.out.println("Your current offer is: " + getCurrentOffer(boxes));
-
-
-
 
     }
 
     private int getCurrentOffer(Box[] boxes) {
-        return 0;
+
+        int currentOffer = 0;
+        int openBoxes = 0;
+
+        for(Box b : boxes) {
+            if(b.isOpened()) {
+                currentOffer += b.getValue();
+                openBoxes++;
+            }
+        }
+
+        if(openBoxes < 2) {
+            openBoxes = 2;
+        }
+        return currentOffer/openBoxes;
     }
 
     private void printGame(Box[] boxes) {

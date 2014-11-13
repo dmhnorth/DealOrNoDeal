@@ -42,7 +42,7 @@ public class Box {
     @Override
     public String toString() {
         try {
-            return getId() + " : " + isOpened() + " : £" + getValue();
+            return getId() + " : " + getValue();
         } catch (IllegalStateException e) {
             return String.valueOf(getId() + " : " + isOpened());
         }
