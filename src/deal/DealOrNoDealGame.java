@@ -1,5 +1,7 @@
 package deal;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -15,7 +17,8 @@ public class DealOrNoDealGame {
 
         boxes = new Box[gameSize];
 
-        populateBoxes(boxes);
+//        populateBoxesWithRandomValues(boxes);
+        populateBoxesWithFixedValues(boxes);
 
         myBox = boxes[random.nextInt(gameSize)];
         myBox.open();
@@ -65,13 +68,30 @@ public class DealOrNoDealGame {
         }
     }
 
-    private void populateBoxes(Box[] boxes) {
+    private void populateBoxesWithRandomValues(Box[] boxes) {
 
         int value = 10;
 
         for (int box = 0; box < boxes.length; box++) {
             boxes[box] = new Box(box + 1, random.nextInt(value + 1000));
             value *= 2;
+        }
+    }
+
+
+    private void populateBoxesWithFixedValues(Box[] boxes) {
+
+        int value = 1;
+
+        ArrayList<Integer> fixedValues = new ArrayList<Integer>();
+        for (Box ignored : boxes) {
+            fixedValues.add(value);
+            value += 1;
+        }
+        Collections.shuffle(fixedValues);
+
+        for (int box = 0; box < boxes.length; box++) {
+            boxes[box] = new Box(box + 1, fixedValues.get(box));
         }
     }
 }
